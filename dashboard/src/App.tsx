@@ -12,9 +12,11 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Stack from 'react-bootstrap/Stack';
 import Card from 'react-bootstrap/Card';
-import ListGroup from 'react-bootstrap/ListGroup';
 
-// import { DataTable } from 'primereact/datatable';
+import { DataTable } from 'primereact/datatable';
+import { Column } from "primereact/column";
+import { Button } from 'primereact/button';
+
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -30,35 +32,40 @@ const App: React.FC = () => {
 
   return (
     <>
-      <header><img id="sl_logo" src="sl_logo.svg" alt="Company logo"/></header>
+      <header><a href="https://www.stackline.com/"><img id="sl_logo" src="sl_logo.svg" alt="Company logo"/></a></header>
       <main>
-        <Container id="cards_wrapper">
+        <Container fluid id="cards_wrapper">
           <Row>
-            {/* <Col xs={12} sm lg={4}> */}
-            <Stack direction="horizontal" gap={3}>
-            <Card className="card_area" style={{ width: '18rem' }}>
+            {/* <Stack direction="horizontal" gap={3}> */}
+            <Col xs={12} sm lg={4} xl={2}>
+            <Card id="product_info" className="card_area">
               <Card.Img variant="top" src={payload.image} />
               <Card.Body>
                 <Card.Title>{payload.title}</Card.Title>
                 <Card.Text>{payload.subtitle}</Card.Text>
+                <div id="tags_area">
+                  {payload?.tags.map((tag: string) => {
+                    return <span className="tag">{tag}</span>
+                  })}
+                </div>
               </Card.Body>
-              <ListGroup className="list-group-flush">
-                {payload.tags.map((tag: string) => {
-                  return <ListGroup.Item>{tag}</ListGroup.Item>
-                })}
-              </ListGroup>
-              {payload.tags && payload.tags.map((tag: string) => {
-                  <p>{tag}</p>
-                })}
             </Card>
-            {/* </Col> */}
-            {/* <Col xs={12} sm lg={8}> */}
+            </Col>
+            <Col xs={12} sm lg={8} xl={10}>
               <Stack gap={3}>
                 <Card id="graph" className="card_area">GRAPH</Card>
-                <Card id="table" className="card_area">TABLE</Card>
+                <Card id="table" className="card_area">
+                <DataTable value={payload.sales} tableStyle={{ minWidth: '50rem' }}>
+                  <Column field="weekEnding" header="WEEK ENDING" sortable style={{ width: '17%' }}></Column>
+                  <Column field="retailSales" header="RETAIL SALES" sortable style={{ width: '20%' }}></Column>
+                  <Column field="wholesaleSales" header="WHOLESALE SALES" sortable style={{ width: '20%' }}></Column>
+                  <Column field="unitsSold" header="UNITS SOLD" sortable style={{ width: '20%' }}></Column>
+                  <Column field="retailerMargin" header="RETAILER MARGIN" sortable style={{ width: '20%' }}></Column>
+                </DataTable>
+                </Card>
               </Stack>
-            {/* </Col> */}
-            </Stack>
+            </Col>
+            {/* </Stack> */}
           </Row>
         </Container>
       </main>
