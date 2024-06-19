@@ -5,24 +5,25 @@ const initialState: DashboardState = {
     brand: '',
     tags: [],
     sales: []
-}
+};
 
+// Data transformer for sales data
 const processSales = (sales: GenericObject[]): GenericObject[] => {
-    let tableRows: GenericObject[] = [];
-    sales.map((sale: GenericObject) => {
+    let tableRows: GenericObject[] = sales.map((sale: GenericObject) => {
         const splitDate: string[] = sale?.weekEnding.split('-');
-        const newSale: GenericObject = {
+        return {
             weekEnding: [splitDate[1], splitDate[2], splitDate[0]].join('-'),
             retailSales: sale?.retailSales,
             wholesaleSales: sale?.wholesaleSales,
             unitsSold: sale?.unitsSold,
             retailerMargin: sale?.retailerMargin
-        }
-        tableRows.push(newSale);
-    })
+        };
+    });
     return tableRows;
-}
+};
 
+// Currently a switch is not needed as there is only one type of action
+// but this is in anticipation of more actions
 const reducer = (
     state: DashboardState = initialState,
     action: APIAction
@@ -40,7 +41,7 @@ const reducer = (
                 sales: processSales(payload.sales)
             };
     }
-    return state
-  }
+    return state;
+  };
   
-  export default reducer
+  export default reducer;

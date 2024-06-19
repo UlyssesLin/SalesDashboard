@@ -1,10 +1,11 @@
 import axios from "axios";
 
+// Fake API call to retrieve sales data from 2017
 export function mockAPICall() {
     const action: APIAction = {
         type: 'MOCK_API_CALL',
         payload: {}
-      }
+    };
     return (dispatch: any) => {
         const fetchData = async () => {
             try {
@@ -14,7 +15,7 @@ export function mockAPICall() {
             } catch (error) {
                 console.log(error);
             }
-        }
+        };
         fetchData();
-    }
-}
+    };
+};

@@ -5,13 +5,13 @@ type DashboardState = {
     brand: string
     tags: string[]
     sales: GenericObject[]
-}
+};
   
 type APIAction = {
     type: string
     payload: GenericObject
-}
+};
 
 type GenericObject = { [key: string]: any };
   
-type DispatchType = (args: DashboardAction) => DashboardAction
+type DispatchType = (args: DashboardAction) => DashboardAction;
