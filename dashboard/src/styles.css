@@ -79,7 +79,6 @@ div.card-body {
 }
 
 .tag {
-  font-size: 12px;
   font-weight: bold;
   margin: 4px;
   padding: 2px 20px;
@@ -87,6 +86,16 @@ div.card-body {
   border-radius: 4px;
   display: inline-block;
   border-color: #b6c0d0;
+}
+
+.tag, #graph_title {
+  font-size: 12px;
+}
+
+#graph_title {
+  color: #554a55;
+  margin-left: 16px;
+  margin-top: 16px;
 }
 
 th:not(:first-child) .p-column-header-content {
