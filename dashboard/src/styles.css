@@ -1,0 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap");
+
+header {
+  height: 48px;
+  background-color: #052849;
+}
+
+#cards_wrapper {
+  max-width: 100%;
+}
+
+#sl_logo {
+  height: 20px;
+  margin: 14px;
+}
+
+main {
+  padding-top: 48px;
+  background-color: #f6f8fa;
+}
+
+div.card_area {
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0), 0 3px 10px 5px rgba(0, 0, 0, 0.03) !important;
+  border: none;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
